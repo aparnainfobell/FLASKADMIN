@@ -7,7 +7,7 @@ class TABLES:
         #mycursor.execute("DROP TABLE IF EXISTS USER_table")
         mycursor.execute("CREATE TABLE USER_table (User_ID int ,"
                          "Email_ID varchar(30) ,"
-                         " Password varchar(16),ROle varchar(20),Team_ID VARCHAR(50) NOT NULL PRIMARY KEY)")
+                         " Password varchar(100),ROle varchar(20),Team_ID VARCHAR(50) NOT NULL PRIMARY KEY)")
         dbase.commit()
 
     def SERVER_TABLE(self, dbase):
