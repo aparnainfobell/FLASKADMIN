@@ -122,10 +122,17 @@ def user(id):
             password='tomandjerry',
             port=5432
         )
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
+        print(cursor,"currrrs")
         # id=request.args.get(id=id)
+    #
+    # cursor.execute("SELECT user_id id, user_name name, user_email email,"
+    #                " user_password pwd FROM tbl_user WHERE user_id=%s",
+    #                id)
+
         cursor.execute(
-            "SELECT User_ID id, Email_ID Email_ID, Password Password, ROle ROle, Team_ID Team_ID  FROM USER_TABLE WHERE User_ID=%s",id)
+            "SELECT User_ID User_ID, Email_ID Email_ID, Password Password, ROle ROle,"
+            " Team_ID Team_ID  FROM USER_TABLE WHERE User_ID=%s",id)
         row = cursor.fetchone()
         resp = jsonify(row)
         resp.status_code = 200
@@ -212,3 +219,5 @@ def update_user():
 
 if __name__ == "__main__":
     app.run()
+
+
